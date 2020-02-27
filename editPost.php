@@ -13,10 +13,10 @@
     <?php
     require("navbar.php");
     ?>
-    <form action="controller.php" method="POST">
+    <form action="controller.php" method="POST"  enctype="multipart/form-data" >
         <!-- connection  -->
         <?php
-
+        
         $connect = mysqli_connect("localhost", "root", "", "socialapp");
         if ($connect) {
             $id = $_GET['id'];
@@ -31,7 +31,9 @@
             // else {
             //     echo "error";
             // }
+
         }
+        require("uploadImage.php");
         ?>
         <!-- end of connection -->
 

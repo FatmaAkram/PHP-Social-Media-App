@@ -87,9 +87,12 @@
                             <div class="cardbox-item ml-5">
                                 <?php
                                 echo $row['body'];
-                                $imageURL = 'uploads/' . $row["image"];
-                                ?></p>
-                                <img src="<?php echo $imageURL; ?>" alt="Post image" />
+                                echo '</p>';
+                                if($row["image"]!=1){
+                                    $imageURL = 'uploads/' . $row["image"];
+                                    echo "<img src={$imageURL} alt='Post image'>";
+                                }
+                                ?>  
                             </div>
                             <!--/ cardbox-item -->
                             <div class="cardbox-base">

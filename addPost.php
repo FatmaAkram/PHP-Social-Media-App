@@ -12,8 +12,9 @@
 <body>
     <?php
         require("navbar.php");
-        
-
+        $errordata = [];
+        if (isset($_GET["error"]))
+            $errordata = explode(',', $_GET["error"]);
     ?>
     <form action="controller.php" method="POST" enctype="multipart/form-data">
     <?php
@@ -50,8 +51,10 @@
                             <!--/ cardbox-heading -->
 
                             <div class="cardbox-item">
+                            <span> <?php if (in_array("body", $errordata)) echo "&nbsp;* Please Write Something !"; ?></span>
                                 <textarea class="ml-3" name="postBody" id="" cols="65" rows="10"></textarea>
-
+                                
+                                <br>
                             </div>
                             <!--/ cardbox-item -->
 
