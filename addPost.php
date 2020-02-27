@@ -12,9 +12,13 @@
 <body>
     <?php
         require("navbar.php");
-    ?>
-    <form action="controller.php" method="POST">
+        
 
+    ?>
+    <form action="controller.php" method="POST" enctype="multipart/form-data">
+    <?php
+    require("uploadImage.php");
+    ?>
     <section class="hero">
         <div class="container">
             <div class="row">

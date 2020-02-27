@@ -14,9 +14,8 @@
     <?php
     $connect = mysqli_connect("localhost", "root", "", "socialapp");
     if ($connect) {
-        $sql = 'SELECT* FROM users u 
-            INNER JOIN posts p
-            ON u.id = p.userId';
+        $sql = 'SELECT p.id as postId,userId ,username,body,image 
+        FROM users u INNER JOIN posts p ON u.id = p.userId';
         $result = mysqli_query($connect, $sql);
     }
     ?>
@@ -47,16 +46,26 @@
 
                             <div class="cardbox-heading">
                                 <!-- START dropdown-->
-                                <div class="dropdown float-right">
-                                    <button class="btn btn-flat btn-flat-icon" type="button" data-toggle="dropdown" aria-expanded="false">
-                                        <em class="fa fa-ellipsis-h"></em>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-scale dropdown-menu-right" role="menu" style="position: absolute; transform: translate3d(-136px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                        <a class="dropdown-item text-danger" href="deletePost.php?id=<?php echo $row['id'] ?>">Delete</a>
-                                        <a class="dropdown-item" href="editPost.php?id=<?php echo $row['id'] ?>">Edit</a>
+                                <?php
+                                if ($id == $row['userId']) {
+                                ?>
+                                    <div class="dropdown float-right">
+                                        <button class="btn btn-flat btn-flat-icon" type="button" data-toggle="dropdown" aria-expanded="false">
+                                            <em class="fa fa-ellipsis-h"></em>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-scale dropdown-menu-right" role="menu" style="position: absolute; transform: translate3d(-136px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                            <a class="dropdown-item text-danger" href="deletePost.php?id=<?php echo $row['postId'] ?>">Delete</a>
+                                            <a class="dropdown-item" href="editPost.php?id=<?php echo $row['postId'] ?>">Edit</a>
 
+                                        </div>
                                     </div>
-                                </div>
+                                <?php
+                                }
+                                ?>
+
+
+
+
                                 <!--/ dropdown -->
                                 <div class="media m-0">
                                     <div class="d-flex mr-3">
@@ -78,7 +87,9 @@
                             <div class="cardbox-item ml-5">
                                 <?php
                                 echo $row['body'];
+                                $imageURL = 'uploads/' . $row["image"];
                                 ?></p>
+                                <img src="<?php echo $imageURL; ?>" alt="Post image" />
                             </div>
                             <!--/ cardbox-item -->
                             <div class="cardbox-base">
