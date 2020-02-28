@@ -16,6 +16,8 @@
     if ($connect) {
         $sql = 'SELECT p.id as postId,userId ,username,body,image 
         FROM users u INNER JOIN posts p ON u.id = p.userId';
+        $sql = 'SELECT p.id as postId,userId ,username,body,image 
+       FROM users u INNER JOIN posts p ON u.id = p.userId';
         $result = mysqli_query($connect, $sql);
     }
     ?>
@@ -23,6 +25,9 @@
     <!-- Navbar -->
     <?php
     require("navbar.php");
+    $errordata = [];
+    if (isset($_GET["error"]))
+        $errordata = explode(',', $_GET["error"]);
     ?>
     <!-- End of Navbar -->
 
@@ -62,10 +67,6 @@
                                 <?php
                                 }
                                 ?>
-
-
-
-
                                 <!--/ dropdown -->
                                 <div class="media m-0">
                                     <div class="d-flex mr-3">
@@ -88,14 +89,15 @@
                                 <?php
                                 echo $row['body'];
                                 echo '</p>';
-                                if($row["image"]!=1){
+                                if ($row["image"] != 1) {
                                     $imageURL = 'uploads/' . $row["image"];
                                     echo "<img src={$imageURL} alt='Post image'>";
                                 }
-                                ?>  
+                                ?>
                             </div>
                             <!--/ cardbox-item -->
                             <div class="cardbox-base">
+
                                 <ul class="float-right">
                                     <li><a><i class="fa fa-comments"></i></a></li>
                                     <li><a><em class="mr-5">12</em></a></li>
@@ -112,16 +114,26 @@
                                 </ul>
                             </div>
                             <!--/ cardbox-base -->
-                            <div class="cardbox-comments">
-                                <span class="comment-avatar float-left">
-                                    <a href=""><img class="rounded-circle" src="http://www.themashabrand.com/templates/bootsnipp/post/assets/img/users/6.jpg" alt="..."></a>
-                                </span>
-                                <div class="search">
-                                    <input placeholder="Write a comment" type="text">
-                                    <button><i class="fa fa-camera"></i></button>
-                                </div>
-                                <!--/. Search -->
+                            <div>
+                                <?php
+                                require("comments.php");
+                                ?>
                             </div>
+                            <form action="commentsController.php" method="post">
+                                <div class="cardbox-comments">
+                                    <!-- <i class="fa fa-paper-plane" aria-hidden="true"></i> -->
+                                    <span class="comment-avatar float-left">
+                                        <a href=""><img class="rounded-circle" src="http://www.themashabrand.com/templates/bootsnipp/post/assets/img/users/6.jpg" alt="..."></a>
+                                    </span>
+                                    <div class="search">
+                                        <input placeholder="Write a comment" type="text" name="comment">
+                                        <input hidden type="text" name="postId" value="<?php echo $row["postId"]; ?>">
+                                        <input type="submit" name="addcomment" value="Send" class="btn">
+
+                                    </div>
+                                    <!--/. Search -->
+                                </div>
+                            </form>
                             <!--/ cardbox-like -->
 
                         </div>

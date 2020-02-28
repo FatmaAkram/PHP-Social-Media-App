@@ -100,7 +100,7 @@
 .media-body p {
   font-family: 'Rokkitt', serif;
   font-weight: 500 !important;
-  font-size: 14px;
+  font-size: 16px;
   color: #88898a;
 }
 
@@ -197,7 +197,7 @@
 /* Cardbox Comments
 ---------------------------------- */
 .cardbox-comments {
-  padding: 10px 40px 20px 40px !important;
+  padding: 10px 40px 20px 5px !important;
   font-size: 0px;
   text-align: center;
   display: inline-block;
@@ -239,6 +239,7 @@
   color: #8d8d8d;
   height: inherit;
   font-weight: 700;
+  outline-style: none;
 }
 
 .search button {
@@ -380,6 +381,47 @@ span {
 }
 
 /*End of upload image*/
-.cardbox .cardbox-item img{
+.cardbox .cardbox-item img {
   width: 90%;
+}
+
+.img-comment-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.img-comment-list li {
+  margin: 0;
+  margin-top: 10px;
+  /* background-color: #f6f7f9; */
+  background-color: #f0f1f3;
+  width: 90%;
+  border-radius: 20px;
+  padding :5px;
+
+}
+
+.img-comment-list li>div {
+  display: table-cell;
+}
+
+.img-comment-list img {
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+.img-comment-list p {
+  margin: 0;
+}
+
+.img-comment-list span {
+  font-size: .8em;
+  color: #aaa;
 }

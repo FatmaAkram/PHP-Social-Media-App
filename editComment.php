@@ -13,7 +13,7 @@
     <?php
     require("navbar.php");
     ?>
-    <form action="controller.php" method="POST"  enctype="multipart/form-data" >
+    <form action="commentsController.php" method="POST" >
         <!-- connection  -->
         <?php
         
@@ -21,19 +21,11 @@
         if ($connect) {
             $id = $_GET['id'];
             // echo $id;
-            $sql = 'SELECT u.username, p.id as postId,p.body FROM users u INNER JOIN posts p ON u.id = p.userId where p.id=' . $id;
-            // echo $sql;
+            // $sql = 'SELECT u.username, p.id as postId,p.body FROM users u INNER JOIN posts p ON u.id = p.userId where p.id=' . $id;
+            $sql = 'SELECT * from comments where id='.$id;
             $result = mysqli_query($connect, $sql);
-            // if($result)
-            // {
-            //     echo "Done";
-            // }
-            // else {
-            //     echo "error";
-            // }
-
+     
         }
-        require("uploadImage.php");
         ?>
         <!-- end of connection -->
 
@@ -70,7 +62,7 @@
                                 <!--/ cardbox-heading -->
 
                                 <div class="cardbox-item">
-                                    <textarea class="ml-3" name="postBody" id="" cols="70" rows="10"><?php echo $row['body']; ?></textarea>
+                                    <textarea class="ml-3" name="commentBody" id="" cols="70" rows="3"><?php echo $row['comment']; ?></textarea>
                                 </div>
                                 <!--/ cardbox-item -->
 
@@ -80,8 +72,8 @@
                             <!-- while bracket -->
                             <!-- <button class="btn btn-danger"> <a href=""></a> Update</button> -->
                             <!-- <a class="btn btn-danger" href="controller.php?postId=">Update</a> -->
-                            <input name="postId" hidden type="text" value="<?php echo $row['postId'] ?>">
-                            <input class="btn btn-danger" type="submit" name="updatePost" value="Update">
+                            <input name="commentId" hidden type="text" value="<?php echo $row['id'] ?>">
+                            <input class="btn btn-danger" type="submit" name="updateComment" value="Update">
 
                         <?php
                         }
