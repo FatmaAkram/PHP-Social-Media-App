@@ -93,9 +93,8 @@ function uploadPost($connect, $isUpdate)
             $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
         }
     } else {
-        $sql = 'insert into posts set body="' . $postBody . '"' . ',userId=' . $id;
         if (!$isUpdate) {
-            $sql = 'insert into posts set body="' . $postBody . '"' . ',userId=' . $id . ',image="' . $fileName . '"';
+            $sql = 'insert into posts set body="' . $postBody . '"' . ',userId=' . $id;
         } else {
             $postId = mysqli_escape_string($connect, $_POST['postId']);
             $postBody = mysqli_escape_string($connect, $_POST['postBody']);
