@@ -66,7 +66,7 @@
                                             echo $row['username'];
                                             ?></p>
                                         <small><span><i class="icon ion-md-pin"></i> Nairobi, Kenya</span></small>
-                                        <small><span><i class="icon ion-md-time"></i> 10 hours ago</span></small>
+                                        <small><span><i class="icon ion-md-time"></i> 1 min ago</span></small>
                                     </div>
                                 </div>
                                 <!--/ media -->
@@ -86,7 +86,7 @@
                             <div class="cardbox-base">
                                 <ul class="float-right">
                                     <li><a><i class="fa fa-comments"></i></a></li>
-                                    <li><a><em class="mr-5">12</em></a></li>
+                                    <li><a><em class="mr-5">1</em></a></li>
                                     <li><a><i class="fa fa-share-alt"></i></a></li>
                                     <li><a><em class="mr-3">03</em></a></li>
                                 </ul>

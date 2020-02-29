@@ -28,7 +28,7 @@
         </div>
         <div class="comment-text">
             <strong><a href=""><?php echo $commentInfoUsername["username"] ?></a></strong>
-            <p><?php echo  $rowComment["comment"] ?></p> <span class="date sub-text">on December 5th, 2016</span>
+            <p><?php echo  $rowComment["comment"] ?></p> <span class="date sub-text">Now</span>
         </div>
         </li>
     <?php

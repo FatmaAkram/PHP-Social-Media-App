@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2020 at 04:57 PM
+-- Generation Time: Feb 29, 2020 at 07:12 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -40,7 +40,7 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `userId`, `postId`, `comment`) VALUES
-(2, 1, 13, 'Good Image :D');
+(10, 5, 27, 'Wow !');
 
 -- --------------------------------------------------------
 
@@ -60,9 +60,7 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `userId`, `body`, `image`) VALUES
-(13, 3, 'Image test 3', 'eagle-flying-spritesheet-sidescroller-game-assets.gif'),
-(21, 4, 'New Post ', '1'),
-(22, 4, 'ss', '23594092_2391496981075366_8442050282359095296_n.jpg');
+(27, 2, 'Pink floyd cover\r\n', '37977975_453596918454599_1750698888269922304_n.jpg');
 
 -- --------------------------------------------------------
 
@@ -85,7 +83,8 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
 (1, 'ghada', 'ghada@gmail.com', '123'),
 (2, 'ahmed', 'ahmed@gmail.com', '123'),
 (3, 'fatma', 'fatma.khater96@gmail.com', '123'),
-(4, 'ahmedakram', 'ahmem@gmail.com', '123');
+(4, 'Ahmed', 'ahmem@gmail.com', '123'),
+(5, 'Ali', 'ali@gmail.com', '123');
 
 --
 -- Indexes for dumped tables
@@ -120,19 +119,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
