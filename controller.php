@@ -1,24 +1,17 @@
 <?php
 $errorArray = [];
-
 $connect = mysqli_connect("localhost", "root", "", "socialapp");
 if ($connect) {
-    // var_dump($_POST);
-
     if (isset($_POST['register'])) {
-        //Query
-
         if (!isset($_POST['username']) || empty($_POST['username'])) {
             $errorArray[] = "username";
         }
-
         if (!isset($_POST['email']) || empty($_POST['email']) || !filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL)) {
             $errorArray[] = "email";
         }
         if (!isset($_POST['password']) || empty($_POST['password'])) {
             $errorArray[] = "password";
         }
-
         if (count($errorArray) > 0) {
             header("Location:register.php?error=" . implode(",", $errorArray));
         } else {
@@ -51,37 +44,23 @@ if ($connect) {
             header("Location:login.php?error=invalid");
         }
     } elseif (isset($_POST['updatePost'])) {
-        $id = mysqli_escape_string($connect, $_POST['postId']);
-        $postBody = mysqli_escape_string($connect, $_POST['postBody']);
-        $sql = 'update posts set body="' . $postBody . '"' . 'where id=' . $id;
-        $result = mysqli_query($connect, $sql);
-        if ($result) {
-            header("Location:index.php");
-        } else {
-            echo "error";
-        }
+        uploadPost($connect,true);
     } elseif (isset($_POST['addPost'])) {
-
         if (!empty($_POST["postBody"])) {
 
-            uploadPost($connect);
-
+            uploadPost($connect,false);
             // Display status message
             echo $statusMsg;
-
             //end of upload image
         } else {
             header("Location:addPost.php?error=body");
         }
     }
 }
-function uploadPost($connect)
+function uploadPost($connect,$isUpdate)
 {
-    // $id=mysqli_escape_string($connect,$_POST['postId']);
     $postBody = mysqli_escape_string($connect, $_POST['postBody']);
     $id = mysqli_escape_string($connect, $_POST['id']);
-    // echo $postBody;
-
     //upload image
     $targetDir = "uploads/";
     $fileName = basename($_FILES["file"]["name"]);
@@ -94,20 +73,20 @@ function uploadPost($connect)
             // Upload file to server
             if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
                 // Insert image file name into database
-
-                $sql = 'insert into posts set body="' . $postBody . '"' . ',userId=' . $id . ',image="' . $fileName . '"';
+                if(!$isUpdate){
+                    $sql = 'insert into posts set body="' . $postBody . '"' . ',userId=' . $id . ',image="' . $fileName . '"';
+                }
+                else {
+                    $postId = mysqli_escape_string($connect, $_POST['postId']);
+                    $postBody = mysqli_escape_string($connect, $_POST['postBody']);
+                    $sql = 'update posts set body="' . $postBody . '",image="'. $fileName . '"'. 'where id=' . $postId;
+                }
                 $result = mysqli_query($connect, $sql);
                 if ($result) {
                     header("Location:index.php");
                 } else {
                     echo " sql add error";
                 }
-                //  $insert = $db->query("INSERT into images (file_name, uploaded_on) VALUES ('".$fileName."', NOW())");
-                //  if($insert){
-                //      $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
-                //  }else{
-                //      $statusMsg = "File upload failed, please try again.";
-                //  } 
             } else {
                 $statusMsg = "Sorry, there was an error uploading your file.";
             }
@@ -116,12 +95,19 @@ function uploadPost($connect)
         }
     } else {
         $sql = 'insert into posts set body="' . $postBody . '"' . ',userId=' . $id;
+        if(!$isUpdate){
+            $sql = 'insert into posts set body="' . $postBody . '"' . ',userId=' . $id . ',image="' . $fileName . '"';
+        }
+        else {
+            $postId = mysqli_escape_string($connect, $_POST['postId']);
+            $postBody = mysqli_escape_string($connect, $_POST['postBody']);
+            $sql = 'update posts set body="' . $postBody . '"'.'where id=' . $postId;
+        }
         $result = mysqli_query($connect, $sql);
         if ($result) {
             header("Location:index.php");
         } else {
             echo " sql add error";
         }
-        // $statusMsg = 'Please select a file to upload.';
     }
 }

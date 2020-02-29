@@ -25,14 +25,8 @@
             <div class="row">
 
                 <div class="col-lg-6 offset-lg-3">
-                    <!-- start of while -->
-                    
-                        <!-- end of while -->
-
                         <div class="cardbox shadow-lg bg-white">
-
                             <div class="cardbox-heading">
-
                                 <div class="media m-0">
                                     <div class="d-flex mr-3">
                                         <a href=""><img class="img-fluid rounded-circle" src="http://www.themashabrand.com/templates/bootsnipp/post/assets/img/users/4.jpg" alt="User"></a>
@@ -49,27 +43,18 @@
                                 <!--/ media -->
                             </div>
                             <!--/ cardbox-heading -->
-
                             <div class="cardbox-item">
                             <span> <?php if (in_array("body", $errordata)) echo "&nbsp;* Please Write Something !"; ?></span>
-                                <textarea class="ml-3" name="postBody" id="" cols="65" rows="10"></textarea>
-                                
+                                <textarea class="ml-3" name="postBody" id="" cols="65" rows="10"></textarea>       
                                 <br>
                             </div>
                             <!--/ cardbox-item -->
-
-
                         </div>
                         <!--/ cardbox -->
                         <!-- while bracket -->
-                        <!-- <button class="btn btn-danger"> <a href=""></a> Update</button> -->
-                        <!-- <a class="btn btn-danger" href="controller.php?postId=">Update</a> -->
                         <input hidden type="text" name="id" value="<?php echo $id;?>">
-                        <input class="btn btn-danger" type="submit" name="addPost"value="Add">
-
-                    
+                        <input class="btn btn-danger" type="submit" name="addPost"value="Add">                   
                     <!-- end of  while bracket -->
-
                 </div>
                 <!--/ col-lg-6 -->
                 </form>
