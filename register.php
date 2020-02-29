@@ -14,9 +14,6 @@
     $errordata = [];
     if (isset($_GET["error"]))
         $errordata = explode(',', $_GET["error"]);
-
-
-
     ?>
     <form action="controller.php" method="POST">
         <div class="container register-form">
@@ -31,27 +28,19 @@
                             <div class="form-group">
                                 <span> <?php if (in_array("username", $errordata)) echo "  **Username is empty"; ?></span>
                                 <input required type="text" name="username" class="form-control" placeholder="Username *" />
-
-
-
                             </div>
                             <div class="form-group">
                                 <span> <?php if (in_array("email", $errordata)) echo "  * Email not valid"; ?></span>
                                 <input required type="text" name="email" class="form-control" placeholder="Email *" />
-
-
                             </div>
                             <div class="form-group">
                                 <span> <?php if (in_array("password", $errordata)) echo "  **Password is empty"; ?></span>
                                 <input required type="password" name="password" class="form-control" placeholder="Your Password *" />
-
                             </div>
                             <input class="btnSubmit" type="submit" name="register" value="register"> <br>
                             <p class="text-center"><a href="login.php">Login</a></p>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>

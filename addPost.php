@@ -11,20 +11,19 @@
 
 <body>
     <?php
-        require("navbar.php");
-        $errordata = [];
-        if (isset($_GET["error"]))
-            $errordata = explode(',', $_GET["error"]);
+    require("navbar.php");
+    $errordata = [];
+    if (isset($_GET["error"]))
+        $errordata = explode(',', $_GET["error"]);
     ?>
     <form action="controller.php" method="POST" enctype="multipart/form-data">
-    <?php
-    require("uploadImage.php");
-    ?>
-    <section class="hero">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-6 offset-lg-3">
+        <?php
+        require("uploadImage.php");
+        ?>
+        <section class="hero">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3">
                         <div class="cardbox shadow-lg bg-white">
                             <div class="cardbox-heading">
                                 <div class="media m-0">
@@ -37,32 +36,30 @@
                                             echo $username;
                                             ?>
                                         </p>
-                                       
                                     </div>
                                 </div>
                                 <!--/ media -->
                             </div>
                             <!--/ cardbox-heading -->
                             <div class="cardbox-item">
-                            <span> <?php if (in_array("body", $errordata)) echo "&nbsp;* Please Write Something !"; ?></span>
-                                <textarea class="ml-3" name="postBody" id="" cols="65" rows="10"></textarea>       
+                                <span> <?php if (in_array("body", $errordata)) echo "&nbsp;* Please Write Something !"; ?></span>
+                                <textarea class="ml-3" name="postBody" id="" cols="65" rows="10"></textarea>
                                 <br>
                             </div>
                             <!--/ cardbox-item -->
                         </div>
                         <!--/ cardbox -->
                         <!-- while bracket -->
-                        <input hidden type="text" name="id" value="<?php echo $id;?>">
-                        <input class="btn btn-danger" type="submit" name="addPost"value="Add">                   
-                    <!-- end of  while bracket -->
-                </div>
-                <!--/ col-lg-6 -->
-                </form>
-                <script src="js/JQuery-3.3.1.min.js"></script>
-                <script src="js/popper.js"></script>
-                <script src="js/bootstrap.js"></script>
-                <script src="js/js.js"></script>
-
+                        <input hidden type="text" name="id" value="<?php echo $id; ?>">
+                        <input class="btn btn-danger" type="submit" name="addPost" value="Add">
+                        <!-- end of  while bracket -->
+                    </div>
+                    <!--/ col-lg-6 -->
+    </form>
+    <script src="js/JQuery-3.3.1.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/js.js"></script>
 </body>
 
 </html>

@@ -10,8 +10,8 @@
 </head>
 
 <body>
-<?php
-    $errordata="";
+    <?php
+    $errordata = "";
     if (isset($_GET["error"]))
         $errordata = "invalid";
     ?>
@@ -31,12 +31,10 @@
         </form>
         <p class="text-center"><a href="register.php">Create an Account</a></p>
     </div>
-
     <script src="js/JQuery-3.3.1.min.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/js.js"></script>
-
 </body>
 
 </html>

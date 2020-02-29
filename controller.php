@@ -44,11 +44,11 @@ if ($connect) {
             header("Location:login.php?error=invalid");
         }
     } elseif (isset($_POST['updatePost'])) {
-        uploadPost($connect,true);
+        uploadPost($connect, true);
     } elseif (isset($_POST['addPost'])) {
         if (!empty($_POST["postBody"])) {
 
-            uploadPost($connect,false);
+            uploadPost($connect, false);
             // Display status message
             echo $statusMsg;
             //end of upload image
@@ -57,7 +57,7 @@ if ($connect) {
         }
     }
 }
-function uploadPost($connect,$isUpdate)
+function uploadPost($connect, $isUpdate)
 {
     $postBody = mysqli_escape_string($connect, $_POST['postBody']);
     $id = mysqli_escape_string($connect, $_POST['id']);
@@ -73,13 +73,12 @@ function uploadPost($connect,$isUpdate)
             // Upload file to server
             if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
                 // Insert image file name into database
-                if(!$isUpdate){
+                if (!$isUpdate) {
                     $sql = 'insert into posts set body="' . $postBody . '"' . ',userId=' . $id . ',image="' . $fileName . '"';
-                }
-                else {
+                } else {
                     $postId = mysqli_escape_string($connect, $_POST['postId']);
                     $postBody = mysqli_escape_string($connect, $_POST['postBody']);
-                    $sql = 'update posts set body="' . $postBody . '",image="'. $fileName . '"'. 'where id=' . $postId;
+                    $sql = 'update posts set body="' . $postBody . '",image="' . $fileName . '"' . 'where id=' . $postId;
                 }
                 $result = mysqli_query($connect, $sql);
                 if ($result) {
@@ -95,13 +94,12 @@ function uploadPost($connect,$isUpdate)
         }
     } else {
         $sql = 'insert into posts set body="' . $postBody . '"' . ',userId=' . $id;
-        if(!$isUpdate){
+        if (!$isUpdate) {
             $sql = 'insert into posts set body="' . $postBody . '"' . ',userId=' . $id . ',image="' . $fileName . '"';
-        }
-        else {
+        } else {
             $postId = mysqli_escape_string($connect, $_POST['postId']);
             $postBody = mysqli_escape_string($connect, $_POST['postBody']);
-            $sql = 'update posts set body="' . $postBody . '"'.'where id=' . $postId;
+            $sql = 'update posts set body="' . $postBody . '"' . 'where id=' . $postId;
         }
         $result = mysqli_query($connect, $sql);
         if ($result) {

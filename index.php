@@ -30,25 +30,14 @@
         $errordata = explode(',', $_GET["error"]);
     ?>
     <!-- End of Navbar -->
-
-    <!-- ==============================================
-	    Hero
-        =============================================== -->
-
     <section class="hero">
         <div class="container">
             <div class="row">
-
                 <div class="col-lg-6 offset-lg-3">
-
-                    <!-- start of while -->
                     <?php
                     while ($row = mysqli_fetch_assoc($result)) {
                     ?>
-                        <!-- end of while -->
-
                         <div class="cardbox shadow-lg bg-white">
-
                             <div class="cardbox-heading">
                                 <!-- START dropdown-->
                                 <?php
@@ -61,7 +50,6 @@
                                         <div class="dropdown-menu dropdown-scale dropdown-menu-right" role="menu" style="position: absolute; transform: translate3d(-136px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
                                             <a class="dropdown-item text-danger" href="deletePost.php?id=<?php echo $row['postId'] ?>">Delete</a>
                                             <a class="dropdown-item" href="editPost.php?id=<?php echo $row['postId'] ?>">Edit</a>
-
                                         </div>
                                     </div>
                                 <?php
@@ -84,7 +72,6 @@
                                 <!--/ media -->
                             </div>
                             <!--/ cardbox-heading -->
-
                             <div class="cardbox-item ml-5">
                                 <?php
                                 echo $row['body'];
@@ -97,7 +84,6 @@
                             </div>
                             <!--/ cardbox-item -->
                             <div class="cardbox-base">
-
                                 <ul class="float-right">
                                     <li><a><i class="fa fa-comments"></i></a></li>
                                     <li><a><em class="mr-5">12</em></a></li>
@@ -121,7 +107,6 @@
                             </div>
                             <form action="commentsController.php" method="post">
                                 <div class="cardbox-comments">
-                                    <!-- <i class="fa fa-paper-plane" aria-hidden="true"></i> -->
                                     <span class="comment-avatar float-left">
                                         <a href=""><img class="rounded-circle" src="http://www.themashabrand.com/templates/bootsnipp/post/assets/img/users/6.jpg" alt="..."></a>
                                     </span>
@@ -135,23 +120,13 @@
                                 </div>
                             </form>
                             <!--/ cardbox-like -->
-
                         </div>
                         <!--/ cardbox -->
-
-
-
-                        <!-- while bracket -->
                     <?php
                     }
                     ?>
-                    <!-- end of  while bracket -->
-
-
                 </div>
                 <!--/ col-lg-6 -->
-
-
             </div>
             <!--/ row -->
         </div>
@@ -161,7 +136,5 @@
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/js.js"></script>
-
 </body>
-
 </html>
